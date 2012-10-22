@@ -146,18 +146,18 @@
         // i.e. transformFnNotations.scale(0.5) >> 'scale3d( 0.5, 0.5, 1)'
     var transformFnNotations = Modernizr.csstransforms3d ?
       { // 3D transform functions
-        translate : function ( position ) {
+        translate: function ( position ) {
           return 'translate3d(' + position[0] + 'px, ' + position[1] + 'px, 0) ';
         },
-        scale : function ( scale ) {
+        scale: function ( scale ) {
           return 'scale3d(' + scale + ', ' + scale + ', 1) ';
         }
       } :
       { // 2D transform functions
-        translate : function ( position ) {
+        translate: function ( position ) {
           return 'translate(' + position[0] + 'px, ' + position[1] + 'px) ';
         },
-        scale : function ( scale ) {
+        scale: function ( scale ) {
           return 'scale(' + scale + ') ';
         }
       }
@@ -350,7 +350,7 @@
   $.Isotope.prototype = {
 
     // sets up widget
-    _create : function( options ) {
+    _create: function( options ) {
 
       this.options = $.extend( {}, $.Isotope.settings, options );
 
@@ -377,11 +377,11 @@
 
       // sorting
       var originalOrderSorter = {
-        'original-order' : function( $elem, instance ) {
+        'original-order': function( $elem, instance ) {
           instance.elemCount ++;
           return instance.elemCount;
         },
-        random : function() {
+        random: function() {
           return Math.random();
         }
       };
@@ -417,7 +417,7 @@
 
     },
 
-    _getAtoms : function( $elems ) {
+    _getAtoms: function( $elems ) {
       var selector = this.options.itemSelector,
           // filter & find
           $atoms = selector ? $elems.filter( selector ).add( $elems.find( selector ) ) : $elems,
@@ -440,7 +440,7 @@
     // (from the constructor above), and when you
     // attempt to initialize the widget again (by the bridge)
     // after it has already been initialized.
-    _init : function( callback ) {
+    _init: function( callback ) {
 
       this.$filteredAtoms = this._filter( this.$allAtoms );
       this._sort();
@@ -448,7 +448,7 @@
 
     },
 
-    option : function( opts ){
+    option: function( opts ){
       // change options AFTER initialization:
       // signature: $('#foo').bar({ cool:false });
       if ( $.isPlainObject( opts ) ){
@@ -468,7 +468,7 @@
     // ====================== updaters ====================== //
     // kind of like setters
 
-    _updateAnimationEngine : function() {
+    _updateAnimationEngine: function() {
       var animationEngine = this.options.animationEngine.toLowerCase().replace( /[ _\-]/g, '');
       var isUsingJQueryAnimation;
       // set applyStyleFnName
@@ -487,11 +487,11 @@
       this._updateUsingTransforms();
     },
 
-    _updateTransformsEnabled : function() {
+    _updateTransformsEnabled: function() {
       this._updateUsingTransforms();
     },
 
-    _updateUsingTransforms : function() {
+    _updateUsingTransforms: function() {
       var usingTransforms = this.usingTransforms = this.options.transformsEnabled &&
         Modernizr.csstransforms && Modernizr.csstransitions && !this.isUsingJQueryAnimation;
 
@@ -507,7 +507,7 @@
 
     // ====================== Filtering ======================
 
-    _filter : function( $atoms ) {
+    _filter: function( $atoms ) {
       var filter = this.options.filter === '' ? '*' : this.options.filter;
 
       if ( !filter ) {
@@ -533,7 +533,7 @@
 
     // ====================== Sorting ======================
 
-    updateSortData : function( $atoms, isIncrementingElemCount ) {
+    updateSortData: function( $atoms, isIncrementingElemCount ) {
       var instance = this,
           getSortData = this.options.getSortData,
           $this, sortData;
@@ -555,7 +555,7 @@
     },
 
     // used on all the filtered atoms
-    _sort : function() {
+    _sort: function() {
 
       var sortBy = this.options.sortBy,
           getSorter = this._getSorter,
@@ -574,21 +574,21 @@
       this.$filteredAtoms.sort( sortFn );
     },
 
-    _getSorter : function( elem, sortBy ) {
+    _getSorter: function( elem, sortBy ) {
       return $.data( elem, 'isotope-sort-data' )[ sortBy ];
     },
 
     // ====================== Layout Helpers ======================
 
-    _translate : function( x, y ) {
+    _translate: function( x, y ) {
       return { translate : [ x, y ] };
     },
 
-    _positionAbs : function( x, y ) {
+    _positionAbs: function( x, y ) {
       return { left: x, top: y };
     },
 
-    _pushPosition : function( $elem, x, y ) {
+    _pushPosition: function( $elem, x, y ) {
       x = Math.round( x + this.offset.left );
       y = Math.round( y + this.offset.top );
       var position = this.getPositionStyles( x, y );
@@ -603,7 +603,7 @@
 
     // used on collection of atoms (should be filtered, and sorted before )
     // accepts atoms-to-be-laid-out to start with
-    layout : function( $elems, callback ) {
+    layout: function( $elems, callback ) {
 
       var layoutMode = this.options.layoutMode;
 
@@ -621,7 +621,7 @@
       this.isLaidOut = true;
     },
 
-    _processStyleQueue : function( $elems, callback ) {
+    _processStyleQueue: function( $elems, callback ) {
       // are we animating the layout arrangement?
       // use plugin-ish syntax for css or animate
       var styleFn = !this.isLaidOut ? 'css' : (
@@ -713,14 +713,14 @@
     },
 
 
-    resize : function() {
+    resize: function() {
       if ( this[ '_' + this.options.layoutMode + 'ResizeChanged' ]() ) {
         this.reLayout();
       }
     },
 
 
-    reLayout : function( callback ) {
+    reLayout: function( callback ) {
 
       this[ '_' +  this.options.layoutMode + 'Reset' ]();
       this.layout( this.$filteredAtoms, callback );
@@ -732,7 +732,7 @@
     // ====================== Adding items ======================
 
     // adds a jQuery object of items to a isotope container
-    addItems : function( $content, callback ) {
+    addItems: function( $content, callback ) {
       var $newAtoms = this._getAtoms( $content );
       // add new atoms to atoms pools
       this.$allAtoms = this.$allAtoms.add( $newAtoms );
@@ -744,7 +744,7 @@
 
     // convienence method for adding elements properly to any layout
     // positions items, hides them, then animates them back in <--- very sezzy
-    insert : function( $content, callback ) {
+    insert: function( $content, callback ) {
       // position items
       this.element.append( $content );
 
@@ -760,7 +760,7 @@
     },
 
     // convienence method for working with Infinite Scroll
-    appended : function( $content, callback ) {
+    appended: function( $content, callback ) {
       var instance = this;
       this.addItems( $content, function( $newAtoms ) {
         instance._addHideAppended( $newAtoms );
@@ -770,7 +770,7 @@
     },
 
     // adds new atoms, then hides them before positioning
-    _addHideAppended : function( $newAtoms ) {
+    _addHideAppended: function( $newAtoms ) {
       this.$filteredAtoms = this.$filteredAtoms.add( $newAtoms );
       $newAtoms.addClass('no-transition');
 
@@ -781,7 +781,7 @@
     },
 
     // sets visible style on new atoms
-    _revealAppended : function( $newAtoms, callback ) {
+    _revealAppended: function( $newAtoms, callback ) {
       var instance = this;
       // apply visible style after a sec
       setTimeout( function() {
@@ -795,7 +795,7 @@
     },
 
     // gathers all atoms
-    reloadItems : function() {
+    reloadItems: function() {
       this.$allAtoms = this._getAtoms( this.element.children() );
     },
 
@@ -825,7 +825,7 @@
 
     },
 
-    shuffle : function( callback ) {
+    shuffle: function( callback ) {
       this.updateSortData( this.$allAtoms );
       this.options.sortBy = 'random';
       this._sort();
@@ -833,7 +833,7 @@
     },
 
     // destroys widget, returns elements and container back (close) to original style
-    destroy : function() {
+    destroy: function() {
 
       var usingTransforms = this.usingTransforms;
       var options = this.options;
@@ -873,7 +873,7 @@
     // calculates number of rows or columns
     // requires columnWidth or rowHeight to be set on namespaced object
     // i.e. this.masonry.columnWidth = 200
-    _getSegments : function( isRows ) {
+    _getSegments: function( isRows ) {
       var namespace = this.options.layoutMode,
           measure  = isRows ? 'rowHeight' : 'columnWidth',
           size     = isRows ? 'height' : 'width',
@@ -897,7 +897,7 @@
 
     },
 
-    _checkIfSegmentsChanged : function( isRows ) {
+    _checkIfSegmentsChanged: function( isRows ) {
       var namespace = this.options.layoutMode,
           segmentsName = isRows ? 'rows' : 'cols',
           prevSegments = this[ namespace ][ segmentsName ];
@@ -909,7 +909,7 @@
 
     // ====================== Masonry ======================
 
-    _masonryReset : function() {
+    _masonryReset: function() {
       // layout-specific props
       this.masonry = {};
       // FIXME shouldn't have to call this again
@@ -921,7 +921,7 @@
       }
     },
 
-    _masonryLayout : function( $elems ) {
+    _masonryLayout: function( $elems ) {
       var instance = this,
           props = instance.masonry;
       $elems.each(function(){
@@ -956,7 +956,7 @@
 
     // worker method that places brick in the columnSet
     //   with the the minY
-    _masonryPlaceBrick : function( $brick, setY ) {
+    _masonryPlaceBrick: function( $brick, setY ) {
       // get the minimum Y value from the columns
       var minimumY = Math.min.apply( Math, setY ),
           shortCol = 0;
@@ -983,18 +983,18 @@
 
     },
 
-    _masonryGetContainerSize : function() {
+    _masonryGetContainerSize: function() {
       var containerHeight = Math.max.apply( Math, this.masonry.colYs );
       return { height: containerHeight };
     },
 
-    _masonryResizeChanged : function() {
+    _masonryResizeChanged: function() {
       return this._checkIfSegmentsChanged();
     },
 
     // ====================== fitRows ======================
 
-    _fitRowsReset : function() {
+    _fitRowsReset: function() {
       this.fitRows = {
         x : 0,
         y : 0,
@@ -1002,7 +1002,7 @@
       };
     },
 
-    _fitRowsLayout : function( $elems ) {
+    _fitRowsLayout: function( $elems ) {
       var instance = this,
           containerWidth = this.element.width(),
           props = this.fitRows;
@@ -1027,18 +1027,18 @@
       });
     },
 
-    _fitRowsGetContainerSize : function () {
+    _fitRowsGetContainerSize: function () {
       return { height : this.fitRows.height };
     },
 
-    _fitRowsResizeChanged : function() {
+    _fitRowsResizeChanged: function() {
       return true;
     },
 
 
     // ====================== cellsByRow ======================
 
-    _cellsByRowReset : function() {
+    _cellsByRowReset: function() {
       this.cellsByRow = {
         index : 0
       };
@@ -1048,7 +1048,7 @@
       this._getSegments(true);
     },
 
-    _cellsByRowLayout : function( $elems ) {
+    _cellsByRowLayout: function( $elems ) {
       var instance = this,
           props = this.cellsByRow;
       $elems.each( function(){
@@ -1062,24 +1062,24 @@
       });
     },
 
-    _cellsByRowGetContainerSize : function() {
+    _cellsByRowGetContainerSize: function() {
       return { height : Math.ceil( this.$filteredAtoms.length / this.cellsByRow.cols ) * this.cellsByRow.rowHeight + this.offset.top };
     },
 
-    _cellsByRowResizeChanged : function() {
+    _cellsByRowResizeChanged: function() {
       return this._checkIfSegmentsChanged();
     },
 
 
     // ====================== straightDown ======================
 
-    _straightDownReset : function() {
+    _straightDownReset: function() {
       this.straightDown = {
         y : 0
       };
     },
 
-    _straightDownLayout : function( $elems ) {
+    _straightDownLayout: function( $elems ) {
       var instance = this;
       $elems.each( function( i ){
         var $this = $(this);
@@ -1088,18 +1088,18 @@
       });
     },
 
-    _straightDownGetContainerSize : function() {
+    _straightDownGetContainerSize: function() {
       return { height : this.straightDown.y };
     },
 
-    _straightDownResizeChanged : function() {
+    _straightDownResizeChanged: function() {
       return true;
     },
 
 
     // ====================== masonryHorizontal ======================
 
-    _masonryHorizontalReset : function() {
+    _masonryHorizontalReset: function() {
       // layout-specific props
       this.masonryHorizontal = {};
       // FIXME shouldn't have to call this again
@@ -1111,7 +1111,7 @@
       }
     },
 
-    _masonryHorizontalLayout : function( $elems ) {
+    _masonryHorizontalLayout: function( $elems ) {
       var instance = this,
           props = instance.masonryHorizontal;
       $elems.each(function(){
@@ -1143,7 +1143,7 @@
       });
     },
 
-    _masonryHorizontalPlaceBrick : function( $brick, setX ) {
+    _masonryHorizontalPlaceBrick: function( $brick, setX ) {
       // get the minimum Y value from the columns
       var minimumX  = Math.min.apply( Math, setX ),
           smallRow  = 0;
@@ -1168,19 +1168,19 @@
       }
     },
 
-    _masonryHorizontalGetContainerSize : function() {
+    _masonryHorizontalGetContainerSize: function() {
       var containerWidth = Math.max.apply( Math, this.masonryHorizontal.rowXs );
       return { width: containerWidth };
     },
 
-    _masonryHorizontalResizeChanged : function() {
+    _masonryHorizontalResizeChanged: function() {
       return this._checkIfSegmentsChanged(true);
     },
 
 
     // ====================== fitColumns ======================
 
-    _fitColumnsReset : function() {
+    _fitColumnsReset: function() {
       this.fitColumns = {
         x : 0,
         y : 0,
@@ -1188,7 +1188,7 @@
       };
     },
 
-    _fitColumnsLayout : function( $elems ) {
+    _fitColumnsLayout: function( $elems ) {
       var instance = this,
           containerHeight = this.element.height(),
           props = this.fitColumns;
@@ -1212,11 +1212,11 @@
       });
     },
 
-    _fitColumnsGetContainerSize : function () {
+    _fitColumnsGetContainerSize: function () {
       return { width : this.fitColumns.width };
     },
 
-    _fitColumnsResizeChanged : function() {
+    _fitColumnsResizeChanged: function() {
       return true;
     },
 
@@ -1224,7 +1224,7 @@
 
     // ====================== cellsByColumn ======================
 
-    _cellsByColumnReset : function() {
+    _cellsByColumnReset: function() {
       this.cellsByColumn = {
         index : 0
       };
@@ -1234,7 +1234,7 @@
       this._getSegments(true);
     },
 
-    _cellsByColumnLayout : function( $elems ) {
+    _cellsByColumnLayout: function( $elems ) {
       var instance = this,
           props = this.cellsByColumn;
       $elems.each( function(){
@@ -1248,23 +1248,23 @@
       });
     },
 
-    _cellsByColumnGetContainerSize : function() {
+    _cellsByColumnGetContainerSize: function() {
       return { width : Math.ceil( this.$filteredAtoms.length / this.cellsByColumn.rows ) * this.cellsByColumn.columnWidth };
     },
 
-    _cellsByColumnResizeChanged : function() {
+    _cellsByColumnResizeChanged: function() {
       return this._checkIfSegmentsChanged(true);
     },
 
     // ====================== straightAcross ======================
 
-    _straightAcrossReset : function() {
+    _straightAcrossReset: function() {
       this.straightAcross = {
         x : 0
       };
     },
 
-    _straightAcrossLayout : function( $elems ) {
+    _straightAcrossLayout: function( $elems ) {
       var instance = this;
       $elems.each( function( i ){
         var $this = $(this);
@@ -1273,11 +1273,11 @@
       });
     },
 
-    _straightAcrossGetContainerSize : function() {
+    _straightAcrossGetContainerSize: function() {
       return { width : this.straightAcross.x };
     },
 
-    _straightAcrossResizeChanged : function() {
+    _straightAcrossResizeChanged: function() {
       return true;
     }
 
