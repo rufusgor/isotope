@@ -14,7 +14,7 @@ toc:
 
 ---
 
-<p class="tagline">Isotope: An exquisite jQuery plugin for magical layouts</p>
+<p class="tagline">Isotope: the jQuery plugin for magical layouts full of filtering and sorting</p>
 
 ## Features
 

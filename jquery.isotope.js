@@ -1,6 +1,6 @@
 /**
  * Isotope v1.5.20
- * An exquisite jQuery plugin for magical layouts
+ * The jQuery plugin for magical layouts full of filtering and sorting
  * http://isotope.metafizzy.co
  *
  * Commercial use requires one-time license fee
