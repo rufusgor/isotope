@@ -1,0 +1,14 @@
+# Isotope v2
+
++ separate imagesLoaded
++ separate jQuery plugin bridge (bridget)
++ remove Modernizr?
++ separate CSS file
++ add tests
++ set `top` `left` positioning after CSS transition
++ Hint all JS before build (grunt ?)
++ bower?
++ function filtering docs & demo
++ function sorting docs & demo #2
++ separate all layout mode JS
++ page nav on right side
