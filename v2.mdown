@@ -3,7 +3,7 @@
 + separate imagesLoaded
 + separate jQuery plugin bridge (bridget)
 + remove Modernizr?
-+ separate CSS file
+<!-- + separate CSS file -->
 + add tests
 + set `top` `left` positioning after CSS transition
 + Hint all JS before build (grunt ?)
