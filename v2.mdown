@@ -2,6 +2,7 @@
 
 + separate imagesLoaded
 + separate jQuery plugin bridge (bridget)
++ separate jquery debounce
 + remove Modernizr?
 <!-- + separate CSS file -->
 + add tests
@@ -12,3 +13,11 @@
 + function sorting docs & demo #2
 + separate all layout mode JS
 + page nav on right side
+
+
+## Dependencies
+
+imagesLoaded
+bridget
+jQuery.debouncedresize (jquery-smartresize)
+Modernizr

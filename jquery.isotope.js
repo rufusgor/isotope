@@ -344,7 +344,7 @@
     sortAscending : true,
     resizesContainer : true,
     transformsEnabled: true,
-    itemPositionDataEnabled: false
+    itemPositionDataEnabled: true
   };
 
   $.Isotope.prototype = {
